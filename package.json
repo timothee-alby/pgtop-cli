@@ -1,0 +1,85 @@
+{
+  "name": "pgtop-cli",
+  "description": "PGTop",
+  "version": "0.1.0",
+  "author": "Tim Alby @timothee-alby",
+  "bin": {
+    "pgtop": "./bin/run"
+  },
+  "bugs": "https://github.com/timothee-alby/pgtop-cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.15",
+    "@oclif/config": "^1.13.0",
+    "@oclif/plugin-commands": "^1.2.2",
+    "@oclif/plugin-help": "^2.2.0",
+    "@oclif/plugin-not-found": "^1.2.2",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
+    "cli-ux": "^4.9.3",
+    "heapdump": "^0.3.14",
+    "ini": "^1.3.5",
+    "inquirer": "^6.4.1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.0",
+    "@oclif/test": "^1.2.4",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-chai-expect": "^2.0.1",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-mocha": "^5.2.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "globby": "^8.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "prettier-eslint-cli": "^4.7.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/timothee-alby/pgtop-cli",
+  "keywords": [],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "pgtop",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-commands",
+      "@oclif/plugin-warn-if-update-available"
+    ],
+    "topics": {
+      "health": {
+        "description": ""
+      },
+      "index": {
+        "description": ""
+      },
+      "queries": {
+        "description": ""
+      }
+    }
+  },
+  "repository": "timothee-alby/pgtop-cli",
+  "scripts": {
+    "version": "oclif-dev readme && git add README.md",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "mocha \"test/**/*.test.js\"",
+    "coverage": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "lint": "node_modules/.bin/eslint .",
+    "format": "node_modules/.bin/prettier-eslint '**/*.js' --list-different",
+    "format:fix": "node_modules/.bin/prettier-eslint '**/*.js' --write"
+  }
+}

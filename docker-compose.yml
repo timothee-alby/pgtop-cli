@@ -1,0 +1,22 @@
+version: '3'
+services:
+  pgtop-tests:
+    build: .
+    command: npm test
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+      - ./test/helpers/pg_service.conf:/root/.pg_service.conf
+    environment:
+      NODE_ENV: test
+      ROOT: /usr/app
+      TEST_OUTPUT:
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:11.4-alpine
+    command: postgres -c shared_preload_libraries='pg_stat_statements'
+    environment:
+      POSTGRES_USER: pgtop
+      POSTGRES_DB: pgtop-test

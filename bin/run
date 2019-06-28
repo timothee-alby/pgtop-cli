@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+process.env.ROOT = __dirname
+  .split('/')
+  .slice(0, -1)
+  .join('/')
+
+require('@oclif/command')
+  .run()
+  .then(require('@oclif/command/flush'))
+  .catch(require('@oclif/errors/handle'))
