@@ -19,6 +19,7 @@ class QueryCommand extends Command {
 
     if (stdout) this.log(stdout)
     if (stderr) this.log(stderr)
+    return { stdout, stderr }
   }
 }
 

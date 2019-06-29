@@ -4,7 +4,7 @@ const QueryCommand = require(`${process.env.ROOT}/src/helpers/QueryCommand.js`)
 class IndexUnusedCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(IndexUnusedCommand)
-    await super.run(
+    return super.run(
       `
 SELECT
   schemaname AS namespace,

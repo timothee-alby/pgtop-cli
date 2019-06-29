@@ -4,7 +4,7 @@ const QueryCommand = require(`${process.env.ROOT}/src/helpers/QueryCommand.js`)
 class HealthVacuumStatsCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(HealthVacuumStatsCommand)
-    await super.run(
+    return super.run(
       `
 WITH
 table_opts AS (

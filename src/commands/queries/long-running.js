@@ -5,7 +5,7 @@ const Statement = require(`${process.env.ROOT}/src/helpers/Statement.js`)
 class QueriesLongRunningCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(QueriesLongRunningCommand)
-    await super.run(
+    return super.run(
       `
 SELECT
   pid,

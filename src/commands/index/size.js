@@ -4,7 +4,7 @@ const QueryCommand = require(`${process.env.ROOT}/src/helpers/QueryCommand.js`)
 class IndexSizeCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(IndexSizeCommand)
-    await super.run(
+    return super.run(
       `
 SELECT
   pg_namespace.nspname AS namespace,

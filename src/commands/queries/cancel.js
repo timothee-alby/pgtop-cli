@@ -4,7 +4,7 @@ const QueryCommand = require(`${process.env.ROOT}/src/helpers/QueryCommand.js`)
 class QueriesCancelCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(QueriesCancelCommand)
-    await super.run(
+    return super.run(
       `SELECT pg_cancel_backend(${args.pid}) AS cancelled`,
       args,
       flags

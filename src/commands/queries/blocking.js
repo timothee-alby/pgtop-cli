@@ -5,7 +5,7 @@ const Statement = require(`${process.env.ROOT}/src/helpers/Statement.js`)
 class QueriesBlockingCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(QueriesBlockingCommand)
-    await super.run(
+    return super.run(
       `
 SELECT
   blocking.pid AS blocking_pid,

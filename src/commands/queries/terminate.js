@@ -4,7 +4,7 @@ const QueryCommand = require(`${process.env.ROOT}/src/helpers/QueryCommand.js`)
 class QueriesTerminateCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(QueriesTerminateCommand)
-    await super.run(
+    return super.run(
       `SELECT pg_terminate_backend(${args.pid}) AS terminated`,
       args,
       flags

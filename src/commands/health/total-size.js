@@ -4,7 +4,7 @@ const QueryCommand = require(`${process.env.ROOT}/src/helpers/QueryCommand.js`)
 class HealthTotalSizeCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(HealthTotalSizeCommand)
-    await super.run(
+    return super.run(
       `
 SELECT
   pg_size_pretty(

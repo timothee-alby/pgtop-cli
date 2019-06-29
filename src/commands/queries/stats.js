@@ -7,7 +7,7 @@ class QueriesStatsCommand extends QueryCommand {
   async run() {
     const { args, flags } = this.parse(QueriesStatsCommand)
     flags.limit = flags.limit || DEFAULT_LIMIT
-    await super.run(
+    return super.run(
       `
 SELECT
   interval '1 millisecond' * total_time AS total_time,
