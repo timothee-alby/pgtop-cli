@@ -10,6 +10,9 @@ module.exports = {
     verbose: flags.boolean({
       char: 'v',
       description: 'Enable verbose output'
+    }),
+    html: flags.boolean({
+      description: 'Set output format to HTML'
     })
   },
 

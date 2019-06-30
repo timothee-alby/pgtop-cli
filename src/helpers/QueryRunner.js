@@ -25,6 +25,9 @@ class QueryRunner {
     this.command += ' --pset null=¤'
     this.command += ' --pset expanded=off'
     this.command += ' --pset footer=off'
+    if (this.flags.html) {
+      this.command += ' --pset format=html'
+    }
   }
 
   decorate() {
