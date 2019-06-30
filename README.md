@@ -46,7 +46,7 @@ $ npm install -g pgtop-cli
 $ pgtop COMMAND
 running command...
 $ pgtop (-v|--version|version)
-pgtop-cli/0.1.0 darwin-x64 node-v10.0.0
+pgtop-cli/0.2.0 darwin-x64 node-v10.0.0
 $ pgtop --help [COMMAND]
 USAGE
   $ pgtop COMMAND
@@ -121,6 +121,7 @@ OPTIONS
   -o, --order=order      Order (column number (Integer) or name (String))
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   List all tables and their size with and without indexes.
@@ -133,7 +134,7 @@ DESCRIPTION
      * `size_with_index`: total table size including indexes
 ```
 
-_See code: [src/commands/health/table-size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/health/table-size.js)_
+_See code: [src/commands/health/table-size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/health/table-size.js)_
 
 ## `pgtop health:total-size`
 
@@ -146,6 +147,7 @@ USAGE
 OPTIONS
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   Show database size.
@@ -154,7 +156,7 @@ DESCRIPTION
      * `size`: database size
 ```
 
-_See code: [src/commands/health/total-size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/health/total-size.js)_
+_See code: [src/commands/health/total-size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/health/total-size.js)_
 
 ## `pgtop health:vacuum-stats`
 
@@ -170,6 +172,7 @@ OPTIONS
   -o, --order=order      Order (column number (Integer) or name (String))
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   Show basic vacuum-related informations.
@@ -184,7 +187,7 @@ DESCRIPTION
      * `expected`: is autovacuum expected
 ```
 
-_See code: [src/commands/health/vacuum-stats.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/health/vacuum-stats.js)_
+_See code: [src/commands/health/vacuum-stats.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/health/vacuum-stats.js)_
 
 ## `pgtop help [COMMAND]`
 
@@ -217,6 +220,7 @@ OPTIONS
   -o, --order=order      Order (column number (Integer) or name (String))
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   List each index with their size
@@ -228,7 +232,7 @@ DESCRIPTION
      * `size`: total index size
 ```
 
-_See code: [src/commands/index/size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/index/size.js)_
+_See code: [src/commands/index/size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/index/size.js)_
 
 ## `pgtop index:total-size`
 
@@ -241,6 +245,7 @@ USAGE
 OPTIONS
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   Show total index size.
@@ -249,7 +254,7 @@ DESCRIPTION
      * `size`: total index size
 ```
 
-_See code: [src/commands/index/total-size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/index/total-size.js)_
+_See code: [src/commands/index/total-size.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/index/total-size.js)_
 
 ## `pgtop index:unused`
 
@@ -265,6 +270,7 @@ OPTIONS
   -o, --order=order      Order (column number (Integer) or name (String))
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   List all non-unique indexes used less than 50 times.
@@ -277,7 +283,7 @@ DESCRIPTION
      * `index_size`: size of the index
 ```
 
-_See code: [src/commands/index/unused.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/index/unused.js)_
+_See code: [src/commands/index/unused.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/index/unused.js)_
 
 ## `pgtop index:usage`
 
@@ -293,6 +299,7 @@ OPTIONS
   -o, --order=order      Order (column number (Integer) or name (String))
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   Show how many times each table has been queried by index and by sequential scan.
@@ -305,7 +312,7 @@ DESCRIPTION
      * `percent`: index usage in percent
 ```
 
-_See code: [src/commands/index/usage.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/index/usage.js)_
+_See code: [src/commands/index/usage.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/index/usage.js)_
 
 ## `pgtop queries:blocking`
 
@@ -322,6 +329,7 @@ OPTIONS
   -s, --service=service    Postgres service to use (must be defined in ~/.pg_service.conf)
   -t, --truncate=truncate  Truncate statement to the given number of characters
   -v, --verbose            Enable verbose output
+  --html                   Set output format to HTML
 
 DESCRIPTION
   List all blocking queries and the queries being blocked.
@@ -335,7 +343,7 @@ DESCRIPTION
      * `blocked_statement`: full statement of the blocked query
 ```
 
-_See code: [src/commands/queries/blocking.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/queries/blocking.js)_
+_See code: [src/commands/queries/blocking.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/queries/blocking.js)_
 
 ## `pgtop queries:cancel PID`
 
@@ -351,6 +359,7 @@ ARGUMENTS
 OPTIONS
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   Cancel the query specified by pid.
@@ -359,7 +368,7 @@ DESCRIPTION
      * `cancelled`: true (`t`) if the query was cancelled
 ```
 
-_See code: [src/commands/queries/cancel.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/queries/cancel.js)_
+_See code: [src/commands/queries/cancel.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/queries/cancel.js)_
 
 ## `pgtop queries:idle`
 
@@ -376,6 +385,7 @@ OPTIONS
   -s, --service=service    Postgres service to use (must be defined in ~/.pg_service.conf)
   -t, --truncate=truncate  Truncate statement to the given number of characters
   -v, --verbose            Enable verbose output
+  --html                   Set output format to HTML
 
 DESCRIPTION
   List all idle queries running for more than 10 seconds.
@@ -386,7 +396,7 @@ DESCRIPTION
      * `statement`: full statement of the query
 ```
 
-_See code: [src/commands/queries/idle.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/queries/idle.js)_
+_See code: [src/commands/queries/idle.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/queries/idle.js)_
 
 ## `pgtop queries:long-running`
 
@@ -403,6 +413,7 @@ OPTIONS
   -s, --service=service    Postgres service to use (must be defined in ~/.pg_service.conf)
   -t, --truncate=truncate  Truncate statement to the given number of characters
   -v, --verbose            Enable verbose output
+  --html                   Set output format to HTML
 
 DESCRIPTION
   List all non-idle queries running for more than 10 seconds.
@@ -413,7 +424,7 @@ DESCRIPTION
      * `statement`: full statement of the query
 ```
 
-_See code: [src/commands/queries/long-running.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/queries/long-running.js)_
+_See code: [src/commands/queries/long-running.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/queries/long-running.js)_
 
 ## `pgtop queries:stats`
 
@@ -430,6 +441,7 @@ OPTIONS
   -s, --service=service    Postgres service to use (must be defined in ~/.pg_service.conf)
   -t, --truncate=truncate  Truncate statement to the given number of characters
   -v, --verbose            Enable verbose output
+  --html                   Set output format to HTML
 
 DESCRIPTION
   Show queries statistics from `pg_stat_statements`.
@@ -445,7 +457,7 @@ DESCRIPTION
      * `query`: full statement of the query
 ```
 
-_See code: [src/commands/queries/stats.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/queries/stats.js)_
+_See code: [src/commands/queries/stats.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/queries/stats.js)_
 
 ## `pgtop queries:terminate PID`
 
@@ -461,6 +473,7 @@ ARGUMENTS
 OPTIONS
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
+  --html                 Set output format to HTML
 
 DESCRIPTION
   Terminate the query specified by pid.
@@ -469,7 +482,7 @@ DESCRIPTION
      * `terminated`: true (`t`) if the query was terminated
 ```
 
-_See code: [src/commands/queries/terminate.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.1.0/src/commands/queries/terminate.js)_
+_See code: [src/commands/queries/terminate.js](https://github.com/timothee-alby/pgtop-cli/blob/v0.2.0/src/commands/queries/terminate.js)_
 <!-- commandsstop -->
 
 # Contributing

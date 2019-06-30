@@ -1,4 +1,4 @@
-## Unreleased
+## v0.2.0 (2019-06-30)
 
 - add option to set psql output format to HTML
 - allow package to be called programmatically
