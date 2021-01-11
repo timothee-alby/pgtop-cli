@@ -46,7 +46,7 @@ $ npm install -g pgtop-cli
 $ pgtop COMMAND
 running command...
 $ pgtop (-v|--version|version)
-pgtop-cli/0.2.0 darwin-x64 node-v10.0.0
+pgtop-cli/0.3.0 darwin-x64 node-v13.13.0
 $ pgtop --help [COMMAND]
 USAGE
   $ pgtop COMMAND
@@ -56,7 +56,12 @@ USAGE
 
 # Connecting to the Database
 
-At the moment the only supported way to connect to a database is via a `.pg_service.conf` file set in the your home folder.
+## With Connection String
+
+Pass a `--dbname` (or `-d`) flag with your connection string. This can be a local
+database or a full connection string.
+
+## With Predefined Service
 
 Define your database connection(s) in the `~/.pg_service.conf` as follow:
 
@@ -117,6 +122,7 @@ USAGE
 
 OPTIONS
   -c, --columns=columns  Select columns to output (comma-separated)
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -l, --limit=limit      Limit number of rows returned
   -o, --order=order      Order (column number (Integer) or name (String))
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
@@ -145,6 +151,7 @@ USAGE
   $ pgtop health:total-size
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
   --html                 Set output format to HTML
@@ -167,6 +174,7 @@ USAGE
   $ pgtop health:vacuum-stats
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns  Select columns to output (comma-separated)
   -l, --limit=limit      Limit number of rows returned
   -o, --order=order      Order (column number (Integer) or name (String))
@@ -215,6 +223,7 @@ USAGE
   $ pgtop index:size
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns  Select columns to output (comma-separated)
   -l, --limit=limit      Limit number of rows returned
   -o, --order=order      Order (column number (Integer) or name (String))
@@ -243,6 +252,7 @@ USAGE
   $ pgtop index:total-size
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
   --html                 Set output format to HTML
@@ -265,6 +275,7 @@ USAGE
   $ pgtop index:unused
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns  Select columns to output (comma-separated)
   -l, --limit=limit      Limit number of rows returned
   -o, --order=order      Order (column number (Integer) or name (String))
@@ -294,6 +305,7 @@ USAGE
   $ pgtop index:usage
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns  Select columns to output (comma-separated)
   -l, --limit=limit      Limit number of rows returned
   -o, --order=order      Order (column number (Integer) or name (String))
@@ -323,6 +335,7 @@ USAGE
   $ pgtop queries:blocking
 
 OPTIONS
+  -d, --dbname=dbname      Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns    Select columns to output (comma-separated)
   -l, --limit=limit        Limit number of rows returned
   -o, --order=order        Order (column number (Integer) or name (String))
@@ -357,6 +370,7 @@ ARGUMENTS
   PID  query to cancel
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
   --html                 Set output format to HTML
@@ -379,6 +393,7 @@ USAGE
   $ pgtop queries:idle
 
 OPTIONS
+  -d, --dbname=dbname      Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns    Select columns to output (comma-separated)
   -l, --limit=limit        Limit number of rows returned
   -o, --order=order        Order (column number (Integer) or name (String))
@@ -407,6 +422,7 @@ USAGE
   $ pgtop queries:long-running
 
 OPTIONS
+  -d, --dbname=dbname      Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns    Select columns to output (comma-separated)
   -l, --limit=limit        Limit number of rows returned
   -o, --order=order        Order (column number (Integer) or name (String))
@@ -435,6 +451,7 @@ USAGE
   $ pgtop queries:stats
 
 OPTIONS
+  -d, --dbname=dbname      Name of the Postgres database to connect to. Overwrite service flag.
   -c, --columns=columns    Select columns to output (comma-separated)
   -l, --limit=limit        Limit number of rows returned
   -o, --order=order        Order (column number (Integer) or name (String))
@@ -471,6 +488,7 @@ ARGUMENTS
   PID  query to terminate
 
 OPTIONS
+  -d, --dbname=dbname    Name of the Postgres database to connect to. Overwrite service flag.
   -s, --service=service  Postgres service to use (must be defined in ~/.pg_service.conf)
   -v, --verbose          Enable verbose output
   --html                 Set output format to HTML
