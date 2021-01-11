@@ -7,6 +7,11 @@ module.exports = {
       description:
         'Postgres service to use (must be defined in ~/.pg_service.conf)'
     }),
+    dbname: flags.string({
+      char: 'd',
+      description:
+        'Name of the Postgres database to connect to. Overwrite service flag. '
+    }),
     verbose: flags.boolean({
       char: 'v',
       description: 'Enable verbose output'

@@ -11,11 +11,19 @@ class QueryRunner {
   }
 
   async prepare() {
-    this.service = this.flags.service || (await PgServices.select())
+    this.dbname = this.flags.dbname
+    if (!this.dbname) {
+      this.service = this.flags.service || (await PgServices.select())
+    }
+
     this.decorate()
 
     this.command = 'psql'
-    this.command += ` service=${this.service}`
+    if (this.dbname) {
+      this.command += ` --dbname=${this.dbname}`
+    } else {
+      this.command += ` service=${this.service}`
+    }
     this.command += ` --command "${this.query}"`
     if (this.flags.verbose) {
       this.command += ' --echo-all'
