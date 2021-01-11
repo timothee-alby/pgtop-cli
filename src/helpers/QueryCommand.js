@@ -14,7 +14,13 @@ class QueryCommand extends Command {
     await queryRunner.prepare()
 
     cli.action.start('running query', '', { stdout: ACTION_TO_STDOUT })
-    const { stdout, stderr } = await queryRunner.run()
+    let { stdout, stderr } = await queryRunner.run()
+    if (stdout) {
+      stdout = stdout
+        .split('\n')
+        .filter(line => line !== '')
+        .join('\n')
+    }
     cli.action.stop()
 
     if (stdout) this.log(stdout)
