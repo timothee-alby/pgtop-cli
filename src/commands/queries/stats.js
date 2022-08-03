@@ -9,6 +9,19 @@ class QueriesStatsCommand extends QueryCommand {
     flags.limit = flags.limit || DEFAULT_LIMIT
     return super.run(
       `
+WITH my_pg_stat_statements AS (
+  SELECT
+    COALESCE((my.json ->> 'total_exec_time')::DECIMAL, 0) + COALESCE((my.json ->> 'total_plan_time')::DECIMAL, 0) + COALESCE((my.json ->> 'total_time')::DECIMAL, 0) AS total_time,
+    COALESCE((my.json ->> 'min_exec_time')::DECIMAL, 0) + COALESCE((my.json ->> 'min_plan_time')::DECIMAL, 0) + COALESCE((my.json ->> 'min_time')::DECIMAL, 0) AS min_time,
+    COALESCE((my.json ->> 'max_exec_time')::DECIMAL, 0) + COALESCE((my.json ->> 'max_plan_time')::DECIMAL, 0) + COALESCE((my.json ->> 'max_time')::DECIMAL, 0) AS max_time,
+    (my.json ->> 'calls')::INTEGER AS calls,
+    my.json ->> 'query' AS query
+  FROM (
+    SELECT ROW_TO_JSON(pg_stat_statements) as json
+    FROM pg_stat_statements
+  ) my
+)
+
 SELECT
   interval '1 millisecond' * total_time AS total_time,
   round(
@@ -24,8 +37,8 @@ SELECT
   round(
     max_time::NUMERIC, 3
   ) as max,
-  ${Statement.query('pg_stat_statements', flags.truncate)}
-FROM pg_stat_statements
+  ${Statement.query('my_pg_stat_statements', flags.truncate)}
+FROM my_pg_stat_statements
 ORDER BY total_time DESC
 `,
       args,
